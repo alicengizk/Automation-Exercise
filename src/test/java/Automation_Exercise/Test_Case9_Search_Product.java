@@ -1,6 +1,12 @@
 package Automation_Exercise;
 
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import utilities.TestBase;
+
+import java.util.List;
 
 public class Test_Case9_Search_Product extends TestBase {
 
@@ -14,4 +20,24 @@ public class Test_Case9_Search_Product extends TestBase {
     7. Verify 'SEARCHED PRODUCTS' is visible
     8. Verify all the products related to search are visible
      */
+
+    @Test
+    public void test09() {
+
+        driver.get("http://automationexercise.com");
+        driver.findElement(By.xpath("//a[@href='/products']")).click();
+        driver.findElement(By.xpath("//*[text()='All Products']")).isDisplayed();
+        driver.findElement(By.id("search_product")).sendKeys("dress");
+        driver.findElement(By.id("submit_search")).click();
+        driver.findElement(By.xpath("//*[text()='Searched Products']")).isDisplayed();
+        driver.findElement(By.tagName("p")).isDisplayed();
+
+
+
+
+
+
+
+
+    }
 }
