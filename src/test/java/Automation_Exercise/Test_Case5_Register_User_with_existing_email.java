@@ -1,7 +1,9 @@
 package Automation_Exercise;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import utilities.TestBase;
 
 public class Test_Case5_Register_User_with_existing_email extends TestBase {
@@ -20,6 +22,8 @@ public class Test_Case5_Register_User_with_existing_email extends TestBase {
     @Test
     public void test05() {
         driver.get("http://automationexercise.com");
+        WebElement homePage = driver.findElement(By.xpath("//body"));
+        Assert.assertTrue(homePage.isDisplayed());
         driver.findElement(By.xpath("//a[@href='/login']")).click();
         driver.findElement(By.xpath("//h2[text()='New User Signup!']")).isDisplayed();
         driver.findElement(By.xpath("//input[@data-qa='signup-name']")).sendKeys("ali cengiz");

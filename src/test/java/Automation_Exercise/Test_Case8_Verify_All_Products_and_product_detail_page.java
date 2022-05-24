@@ -1,8 +1,10 @@
 package Automation_Exercise;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import utilities.TestBase;
 
@@ -24,7 +26,8 @@ public class Test_Case8_Verify_All_Products_and_product_detail_page extends Test
     public void test08() {
         Actions actions=new Actions(driver);
         driver.get("http://automationexercise.com");
-        System.out.println(driver.getCurrentUrl());
+        WebElement homePage = driver.findElement(By.xpath("//body"));
+        Assert.assertTrue(homePage.isDisplayed());
         driver.findElement(By.xpath("//a[@href='/products']")).click();
         driver.findElement(By.xpath("//*[text()='All Products']")).isDisplayed();
         actions.sendKeys(Keys.PAGE_DOWN).perform();

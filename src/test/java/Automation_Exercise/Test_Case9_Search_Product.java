@@ -1,5 +1,6 @@
 package Automation_Exercise;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -25,12 +26,21 @@ public class Test_Case9_Search_Product extends TestBase {
     public void test09() {
 
         driver.get("http://automationexercise.com");
+        WebElement homePage = driver.findElement(By.xpath("//body"));
+        Assert.assertTrue(homePage.isDisplayed());
         driver.findElement(By.xpath("//a[@href='/products']")).click();
         driver.findElement(By.xpath("//*[text()='All Products']")).isDisplayed();
-        driver.findElement(By.id("search_product")).sendKeys("dress");
+        String aranacakKelime="Dress";
+        driver.findElement(By.id("search_product")).sendKeys(aranacakKelime);
         driver.findElement(By.id("submit_search")).click();
         driver.findElement(By.xpath("//*[text()='Searched Products']")).isDisplayed();
-        driver.findElement(By.tagName("p")).isDisplayed();
+        driver.findElement(By.xpath("//div[@class='productinfo text-center']/p")).isDisplayed();
+        List<WebElement> products = driver.findElements(By.xpath("//div[@class='productinfo text-center']/p"));
+        for (WebElement each:products
+             ) {
+            Assert.assertTrue(each.isDisplayed());
+
+        }
 
 
 

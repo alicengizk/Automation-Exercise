@@ -1,7 +1,9 @@
 package Automation_Exercise;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import utilities.TestBase;
 
 public class Test_Case4_Logout_User extends TestBase {
@@ -22,6 +24,8 @@ public class Test_Case4_Logout_User extends TestBase {
     @Test
     public void test04() {
         driver.get("http://automationexercise.com");
+        WebElement homePage = driver.findElement(By.xpath("//body"));
+        Assert.assertTrue(homePage.isDisplayed());
         driver.findElement(By.xpath("//a[@href='/login']")).click();
         driver.findElement(By.xpath("//h2[text()='Login to your account']")).isDisplayed();
         driver.findElement(By.xpath("//input[@data-qa='login-email']")).sendKeys("alicengiz2@gmail.com");

@@ -1,8 +1,10 @@
 package Automation_Exercise;
 
 import com.github.javafaker.Faker;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import utilities.TestBase;
 
 public class Test_Case3_Login_User_with_correct_email_and_password extends TestBase {
@@ -22,6 +24,8 @@ public class Test_Case3_Login_User_with_correct_email_and_password extends TestB
     public void test03() {
         Faker faker=new Faker();
         driver.get("http://automationexercise.com");
+        WebElement homePage = driver.findElement(By.xpath("//body"));
+        Assert.assertTrue(homePage.isDisplayed());
         driver.findElement(By.xpath("//a[text()=' Signup / Login']")).click();
         driver.findElement(By.xpath("//h2[text()='Login to your account']")).isDisplayed();
         driver.findElement(By.xpath("//input[@data-qa='login-email']")).sendKeys(faker.internet().emailAddress());

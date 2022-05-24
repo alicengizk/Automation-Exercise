@@ -1,9 +1,11 @@
 package Automation_Exercise;
 
 import com.github.javafaker.Faker;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import utilities.TestBase;
 
@@ -35,6 +37,8 @@ public class Test_Case1_Register_User  extends TestBase {
         Actions actions=new Actions(driver);
         Faker faker=new Faker();
         driver.get("http://automationexercise.com");
+        WebElement homePage = driver.findElement(By.xpath("//body"));
+        Assert.assertTrue(homePage.isDisplayed());
         driver.findElement(By.xpath("//a[@href='/login']")).click();
         driver.findElement(By.xpath("//*[text()='New User Signup!']")).isDisplayed();
         driver.findElement(By.xpath("//input[@type='text']")).sendKeys(faker.name().firstName());
