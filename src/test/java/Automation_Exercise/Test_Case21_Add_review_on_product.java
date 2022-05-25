@@ -1,5 +1,9 @@
 package Automation_Exercise;
 
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import utilities.TestBase;
 
 public class Test_Case21_Add_review_on_product extends TestBase {
@@ -15,4 +19,20 @@ public class Test_Case21_Add_review_on_product extends TestBase {
     8. Click 'Submit' button
     9. Verify success message 'Thank you for your review.'
      */
+
+    @Test
+    public void test21() {
+        Actions actions=new Actions(driver);
+        driver.get("http://automationexercise.com");
+        driver.findElement(By.xpath("//a[@href='/products']")).click();
+        driver.findElement(By.xpath("//*[text()='All Products']")).isDisplayed();
+        driver.findElement(By.xpath("//a[@href='/product_details/1']")).click();
+        driver.findElement(By.xpath("//a[@href='#reviews']")).isDisplayed();
+        driver.findElement(By.id("name")).sendKeys("ali cengiz");
+        driver.findElement(By.id("email")).sendKeys("alicengiz@gmail.com");
+        driver.findElement(By.id("review")).sendKeys("inceleme");
+        driver.findElement(By.id("button-review")).click();
+        driver.findElement(By.xpath("//*[text()='Thank you for your review.']")).isDisplayed();
+
+    }
 }
